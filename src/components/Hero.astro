@@ -7,93 +7,115 @@ import { siteConfig } from "../config";
 
 <section
   id="hero"
-  class="relative py-12 md:py-16 lg:py-20"
+  class="relative py-16 md:py-20 lg:py-24"
   style={`background-color: ${siteConfig.colors.creamLight}`}
 >
   <div class="max-w-6xl mx-auto px-6 lg:px-8">
     <!-- Main Hero Content -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-      <!-- Photo - Large Square -->
-      <div class="order-2 md:order-1 flex justify-center md:justify-start">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <!-- Photo Column -->
+      <div class="md:col-span-4 flex justify-center md:justify-start order-2 md:order-1">
         <div class="relative hero-photo">
+          <!-- Decorative background -->
           <div
-            class="absolute -inset-3 rounded-2xl opacity-20"
-            style={`background-color: ${siteConfig.colors.navy}`}
+            class="absolute -inset-4 rounded-2xl"
+            style={`background: linear-gradient(135deg, ${siteConfig.colors.navy}15 0%, ${siteConfig.colors.teal}15 100%)`}
           ></div>
           <img
             src={`${import.meta.env.BASE_URL}/profile.png`}
             alt={siteConfig.name}
-            class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-xl"
-            style={`border: 4px solid ${siteConfig.colors.teal}`}
+            class="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 object-cover rounded-2xl shadow-2xl"
+            style={`border: 3px solid ${siteConfig.colors.teal}`}
           />
+          <!-- PRCP Badge -->
+          <div
+            class="absolute -bottom-3 -right-3 px-4 py-2 rounded-lg shadow-lg"
+            style={`background-color: ${siteConfig.colors.navy}; color: white`}
+          >
+            <span class="text-xs font-bold tracking-wider">SENIOR @ PRCP</span>
+          </div>
         </div>
       </div>
 
-      <!-- Text Content -->
-      <div class="order-1 md:order-2 text-center md:text-left">
-        <!-- Podcast Badge -->
-        <div
-          class="hero-photo inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
-          style={`background-color: ${siteConfig.colors.navy}15; border: 1px solid ${siteConfig.colors.navy}30`}
-        >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" style={`color: ${siteConfig.colors.teal}`}>
-            <path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/>
-          </svg>
-          <span class="text-sm font-medium" style={`color: ${siteConfig.accentColor}`}>Cofundador de Odisea Laboral</span>
-        </div>
-
+      <!-- Text Content Column -->
+      <div class="md:col-span-8 order-1 md:order-2 text-center md:text-left">
+        <!-- Name -->
         <h1
-          class="hero-title text-3xl md:text-4xl lg:text-5xl font-normal tracking-widest uppercase"
+          class="hero-title text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
           style={`color: ${siteConfig.accentColor}; font-family: 'Raleway', sans-serif;`}
         >
           {siteConfig.name}
         </h1>
-        <p
-          class="hero-subtitle text-xl md:text-2xl font-light mt-2 mb-3"
-          style={`color: ${siteConfig.colors.navy}; font-family: 'Raleway', sans-serif;`}
-        >
-          {siteConfig.title}
-        </p>
+
+        <!-- Separator -->
         <div
-          class="w-20 h-1 mb-4 mx-auto md:mx-0 rounded-full"
+          class="w-24 h-1.5 my-4 mx-auto md:mx-0 rounded-full"
           style={`background-color: ${siteConfig.colors.teal}`}
         ></div>
-        <p class="hero-description text-base md:text-lg text-gray-600 leading-relaxed mb-6 max-w-md mx-auto md:mx-0">
-          Conectando el Derecho Laboral con los retos cotidianos de la gestión humana. Escribo sobre relaciones laborales, compliance y habilidades blandas.
+
+        <!-- Title + Badge -->
+        <div class="hero-subtitle flex flex-wrap items-center justify-center md:justify-start gap-3 mb-4">
+          <span
+            class="text-xl md:text-2xl font-medium"
+            style={`color: ${siteConfig.colors.navy}; font-family: 'Raleway', sans-serif;`}
+          >
+            {siteConfig.title}
+          </span>
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium"
+            style={`background-color: ${siteConfig.colors.teal}; color: white`}
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/>
+            </svg>
+            Odisea Laboral
+          </span>
+        </div>
+
+        <!-- Value Proposition -->
+        <p
+          class="hero-description text-lg md:text-xl text-gray-700 leading-relaxed mb-8 max-w-xl mx-auto md:mx-0"
+          style="font-family: 'Montserrat', sans-serif;"
+        >
+          <strong style={`color: ${siteConfig.accentColor}`}>Resuelvo conflictos laborales antes de que lleguen a juicio.</strong>
+          <br class="hidden md:block" />
+          Acompaño a empresas y áreas de RRHH en la toma de decisiones laborales sensibles.
         </p>
 
-        <!-- CTA Button -->
-        <a
-          href={`mailto:${siteConfig.social?.email}?subject=Consulta`}
-          class="hero-cta btn-hover inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-medium mb-6"
-          style={`background-color: ${siteConfig.colors.teal}`}
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-          Escríbeme
-        </a>
+        <!-- CTAs -->
+        <div class="hero-cta flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+          <a
+            href={`mailto:${siteConfig.social?.email}?subject=Consulta Laboral`}
+            class="btn-hover inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-lg shadow-lg"
+            style={`background-color: ${siteConfig.colors.teal}`}
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Escríbeme
+          </a>
+          <a
+            href={siteConfig.social?.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-hover inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold text-lg border-2"
+            style={`border-color: ${siteConfig.colors.navy}; color: ${siteConfig.colors.navy}`}
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            Ver en YouTube
+          </a>
+        </div>
 
         <!-- Social Links -->
-        <div class="hero-social flex gap-4 justify-center md:justify-start">
-          {siteConfig.social?.email && (
-            <a
-              href={`mailto:${siteConfig.social.email}`}
-              class="icon-hover w-10 h-10 rounded-full flex items-center justify-center"
-              style={`background-color: ${siteConfig.accentColor}; color: white`}
-              aria-label="Email"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </a>
-          )}
+        <div class="hero-social flex gap-3 justify-center md:justify-start">
           {siteConfig.social?.linkedin && (
             <a
               href={siteConfig.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="icon-hover w-10 h-10 rounded-full flex items-center justify-center"
+              class="icon-hover w-11 h-11 rounded-full flex items-center justify-center transition-all"
               style={`background-color: ${siteConfig.accentColor}; color: white`}
               aria-label="LinkedIn"
             >
@@ -102,17 +124,15 @@ import { siteConfig } from "../config";
               </svg>
             </a>
           )}
-          {siteConfig.social?.youtube && (
+          {siteConfig.social?.email && (
             <a
-              href={siteConfig.social.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="icon-hover w-10 h-10 rounded-full flex items-center justify-center"
+              href={`mailto:${siteConfig.social.email}`}
+              class="icon-hover w-11 h-11 rounded-full flex items-center justify-center transition-all"
               style={`background-color: ${siteConfig.accentColor}; color: white`}
-              aria-label="YouTube - Odisea Laboral"
+              aria-label="Email"
             >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
             </a>
           )}
@@ -120,32 +140,32 @@ import { siteConfig } from "../config";
       </div>
     </div>
 
-    <!-- Stats Row -->
-    <div class="hero-stats grid grid-cols-3 gap-4 md:gap-8 mt-12 pt-8 border-t" style={`border-color: ${siteConfig.colors.navy}30`}>
+    <!-- Trust Bar -->
+    <div
+      class="hero-stats mt-16 py-6 px-8 rounded-2xl grid grid-cols-3 gap-4 md:gap-8"
+      style={`background-color: ${siteConfig.colors.navy}08; border: 1px solid ${siteConfig.colors.navy}15`}
+    >
       <div class="text-center stat-number">
         <div
-          class="text-3xl md:text-4xl font-bold"
+          class="text-2xl md:text-3xl font-bold"
           style={`color: ${siteConfig.colors.teal}`}
         >10+</div>
-        <div class="text-sm md:text-base text-gray-600">Años de experiencia</div>
+        <div class="text-xs md:text-sm text-gray-600 font-medium">Años de experiencia</div>
       </div>
-      <div class="text-center stat-number">
+      <div class="text-center stat-number border-x" style={`border-color: ${siteConfig.colors.navy}20`}>
         <div
-          class="text-3xl md:text-4xl font-bold"
-          style={`color: ${siteConfig.colors.teal}`}
-        >PRCP</div>
-        <div class="text-sm md:text-base text-gray-600">Payet, Rey, Cauvi, Pérez</div>
-      </div>
-      <div class="text-center stat-number">
-        <div
-          class="text-3xl md:text-4xl font-bold"
+          class="text-2xl md:text-3xl font-bold"
           style={`color: ${siteConfig.colors.teal}`}
         >2</div>
-        <div class="text-sm md:text-base text-gray-600">Maestrías</div>
+        <div class="text-xs md:text-sm text-gray-600 font-medium">Maestrías en Derecho</div>
+      </div>
+      <div class="text-center stat-number">
+        <div
+          class="text-2xl md:text-3xl font-bold"
+          style={`color: ${siteConfig.colors.teal}`}
+        >PRCP</div>
+        <div class="text-xs md:text-sm text-gray-600 font-medium">Top Firma en Perú</div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Bottom Navy Bar with Shimmer -->
-<div class="w-full h-3 olive-bar-shimmer"></div>
