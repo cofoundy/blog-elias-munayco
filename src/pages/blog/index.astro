@@ -1,0 +1,122 @@
+---
+import { getCollection } from "astro:content";
+import { siteConfig } from "../../config";
+import "../../styles/global.css";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={`Blog de ${siteConfig.name} - ${siteConfig.description}`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Blog | {siteConfig.name}</title>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+      <nav class="max-w-4xl mx-auto px-8 py-4 flex items-center justify-between">
+        <a
+          href={`${import.meta.env.BASE_URL}/`}
+          class="font-bold text-lg hover:opacity-70 transition-opacity"
+          style={`color: ${siteConfig.accentColor};`}
+        >
+          {siteConfig.name}
+        </a>
+        <div class="flex items-center gap-6">
+          <a
+            href={`${import.meta.env.BASE_URL}/`}
+            class="text-gray-600 hover:text-black transition-colors"
+          >
+            Inicio
+          </a>
+          <a
+            href={`${import.meta.env.BASE_URL}/blog/`}
+            class="font-medium"
+            style={`color: ${siteConfig.accentColor};`}
+          >
+            Blog
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-8 py-16">
+      <h1 class="text-4xl font-bold mb-4">Blog</h1>
+      <p class="text-gray-600 mb-12 max-w-2xl">
+        Reflexiones sobre derecho laboral, gestión de personas y habilidades blandas.
+      </p>
+
+      <div class="space-y-8">
+        {posts.map((post) => (
+          <article class="bg-white p-8 rounded-lg border border-gray-200 hover:border-gray-400 hover:shadow-lg transition-all duration-300">
+            <a href={`${import.meta.env.BASE_URL}/blog/${post.id}/`} class="block group">
+              <time
+                class="text-sm text-gray-500 font-mono"
+                datetime={post.data.pubDate.toISOString()}
+              >
+                {post.data.pubDate.toLocaleDateString("es-PE", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+              <h2
+                class="text-2xl font-semibold mt-2 mb-3 group-hover:underline"
+                style={`color: ${siteConfig.accentColor};`}
+              >
+                {post.data.title}
+              </h2>
+              <p class="text-gray-600 leading-relaxed">
+                {post.data.description}
+              </p>
+              <span
+                class="inline-flex items-center gap-1 mt-4 text-sm font-medium"
+                style={`color: ${siteConfig.accentColor};`}
+              >
+                Leer más
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      {posts.length === 0 && (
+        <p class="text-gray-500 text-center py-12">
+          Próximamente nuevos artículos...
+        </p>
+      )}
+    </main>
+
+    <footer class="border-t border-gray-200 py-8 mt-16">
+      <div class="max-w-4xl mx-auto px-8 text-center text-gray-500 text-sm">
+        © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.
+      </div>
+    </footer>
+  </body>
+</html>

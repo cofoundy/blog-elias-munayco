@@ -1,0 +1,146 @@
+---
+import { siteConfig } from "../config";
+const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+
+// Project icons mapping (emoji fallback)
+const projectIcons: Record<string, string> = {
+  "#DatoLaboral": "⚖️",
+};
+
+// Projects with custom images/logos - using BASE_URL for GitHub Pages
+const baseUrl = import.meta.env.BASE_URL;
+const projectImages: Record<string, string> = {
+  "Odisea Laboral": `${baseUrl}/odisea-laboral.jpg`,
+};
+
+// Custom link labels
+const projectLinkLabels: Record<string, string> = {
+  "Odisea Laboral": "Escúchanos",
+};
+
+// Helper to format description with YouTube bold red
+function formatDescription(name: string, description: string): string {
+  if (name === "Odisea Laboral") {
+    return description.replace("YouTube", '<strong class="text-red-600">YouTube</strong>');
+  }
+  return description;
+}
+---
+
+{
+  hasProjects && (
+    <>
+      <!-- Olive Bar with Shimmer -->
+      <div class="w-full h-2 olive-bar-shimmer"></div>
+
+      <section
+        id="projects"
+        class="py-12 md:py-16"
+        style={`background-color: ${siteConfig.colors.cream}`}
+      >
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+          <!-- Header -->
+          <div class="mb-10 reveal-left">
+            <h2
+              class="text-3xl md:text-4xl font-bold"
+              style={`color: ${siteConfig.accentColor}`}
+            >
+              Proyectos
+            </h2>
+            <div
+              class="w-16 h-1 mt-3 rounded-full"
+              style={`background-color: ${siteConfig.colors.teal}`}
+            ></div>
+          </div>
+
+          <!-- Project Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {siteConfig.projects.map((project, index) => {
+              const Component = project.link ? "a" : "div";
+              const linkProps = project.link
+                ? {
+                    href: project.link,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }
+                : {};
+
+              const hasImage = projectImages[project.name];
+              const icon = projectIcons[project.name] || "✨";
+
+              return (
+                <Component
+                  {...linkProps}
+                  class={`reveal stagger-${index + 1} group project-card card-hover p-6 rounded-xl ${
+                    project.link ? "cursor-pointer" : ""
+                  }`}
+                  style={`background-color: white; border: 1px solid ${siteConfig.colors.navy}20`}
+                >
+                  <!-- Icon or Image -->
+                  {hasImage ? (
+                    <img
+                      src={hasImage}
+                      alt={project.name}
+                      class="h-16 w-auto object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
+                    />
+                  ) : (
+                    <div
+                      class="w-16 h-16 rounded-xl flex items-center justify-center text-2xl mb-4 transition-transform duration-300 group-hover:scale-110"
+                      style={`background-color: ${siteConfig.colors.teal}20`}
+                    >
+                      {icon}
+                    </div>
+                  )}
+
+                  <!-- Content -->
+                  <h3
+                    class="text-lg font-semibold mb-2"
+                    style={`color: ${siteConfig.accentColor}`}
+                  >
+                    {project.name}
+                  </h3>
+                  <p class="text-sm text-gray-600 mb-4 line-clamp-3" set:html={formatDescription(project.name, project.description)}>
+                  </p>
+
+                  <!-- Tags -->
+                  <div class="flex flex-wrap gap-1.5">
+                    {project.skills.slice(0, 3).map((skill) => (
+                      <span
+                        class="text-xs px-2 py-1 rounded-full"
+                        style={`background-color: ${siteConfig.colors.cream}; color: ${siteConfig.colors.navy}`}
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+
+                  <!-- Link indicator -->
+                  {project.link && (
+                    <div
+                      class="mt-4 flex items-center gap-1 text-sm font-medium transition-all duration-300 group-hover:gap-2"
+                      style={`color: ${siteConfig.colors.teal}`}
+                    >
+                      {projectLinkLabels[project.name] || "Ver proyecto"}
+                      <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </div>
+                  )}
+                </Component>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

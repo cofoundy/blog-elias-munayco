@@ -1,0 +1,84 @@
+---
+import { siteConfig } from "../config";
+const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+
+// Education icons
+const eduIcons: Record<string, string> = {
+  "CENTRUM PUCP": "🎯",
+  "Tirant Lo Blanc (Colombia)": "⚖️",
+  "Toulouse Lautrec": "🎨",
+  "Univ. San Martín de Porres": "🏛️",
+  "California Western School of Law": "🇺🇸",
+};
+---
+
+{
+  hasEducation && (
+    <section
+      id="education"
+      class="py-12 md:py-16"
+      style={`background-color: ${siteConfig.colors.creamLight}`}
+    >
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-10 reveal-left">
+          <h2
+            class="text-3xl md:text-4xl font-bold"
+            style={`color: ${siteConfig.accentColor}`}
+          >
+            Educación
+          </h2>
+          <div
+            class="w-16 h-1 mt-3 rounded-full"
+            style={`background-color: ${siteConfig.colors.teal}`}
+          ></div>
+        </div>
+
+        <!-- Education Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {siteConfig.education.map((edu, index) => {
+            const icon = eduIcons[edu.school] || "📖";
+            return (
+              <div
+                class={`reveal stagger-${index + 1} card-hover flex gap-4 p-4 rounded-xl`}
+                style={`background-color: white; border: 1px solid ${siteConfig.colors.navy}15`}
+              >
+                <!-- Icon -->
+                <div
+                  class="w-12 h-12 rounded-lg flex items-center justify-center text-xl flex-shrink-0"
+                  style={`background-color: ${siteConfig.colors.cream}`}
+                >
+                  {icon}
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1 min-w-0">
+                  <h3
+                    class="text-base font-semibold truncate"
+                    style={`color: ${siteConfig.accentColor}`}
+                  >
+                    {edu.degree}
+                  </h3>
+                  <p
+                    class="text-sm truncate"
+                    style={`color: ${siteConfig.colors.teal}`}
+                  >
+                    {edu.school}
+                  </p>
+                  {edu.dateRange && (
+                    <p
+                      class="text-xs mt-1"
+                      style={`color: ${siteConfig.colors.navy}`}
+                    >
+                      {edu.dateRange}
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}

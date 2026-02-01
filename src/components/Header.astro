@@ -1,0 +1,90 @@
+---
+import { siteConfig } from "../config";
+
+const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
+const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+---
+
+<header
+  id="header"
+  class="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden md:block opacity-0 pointer-events-none transition-all duration-500"
+>
+  <nav
+    class="px-6 py-3 rounded-full shadow-lg backdrop-blur-md"
+    style={`background-color: ${siteConfig.colors.cream}ee; border: 1px solid ${siteConfig.colors.navy}20`}
+  >
+    <ul class="flex items-center gap-6">
+      <li>
+        <a
+          href="#about"
+          class="link-underline text-sm font-medium transition-colors duration-300"
+          style={`color: ${siteConfig.accentColor}`}
+        >
+          Sobre Mi
+        </a>
+      </li>
+      {hasProjects && (
+        <li>
+          <a
+            href="#projects"
+            class="link-underline text-sm font-medium transition-colors duration-300"
+            style={`color: ${siteConfig.accentColor}`}
+          >
+            Proyectos
+          </a>
+        </li>
+      )}
+      {hasExperience && (
+        <li>
+          <a
+            href="#experience"
+            class="link-underline text-sm font-medium transition-colors duration-300"
+            style={`color: ${siteConfig.accentColor}`}
+          >
+            Trayectoria
+          </a>
+        </li>
+      )}
+      {hasEducation && (
+        <li>
+          <a
+            href="#education"
+            class="link-underline text-sm font-medium transition-colors duration-300"
+            style={`color: ${siteConfig.accentColor}`}
+          >
+            Educación
+          </a>
+        </li>
+      )}
+      <li>
+        <a
+          href={`${import.meta.env.BASE_URL}/blog/`}
+          class="link-underline text-sm font-medium transition-colors duration-300"
+          style={`color: ${siteConfig.accentColor}`}
+        >
+          Blog
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  let lastScrollY = 0;
+
+  window.addEventListener("scroll", () => {
+    const header = document.getElementById("header");
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > 400) {
+      header?.classList.remove("opacity-0", "pointer-events-none");
+      header?.classList.add("opacity-100", "pointer-events-auto", "header-visible");
+    } else {
+      header?.classList.add("opacity-0", "pointer-events-none");
+      header?.classList.remove("opacity-100", "pointer-events-auto", "header-visible");
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>
