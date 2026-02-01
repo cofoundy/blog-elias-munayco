@@ -26,22 +26,26 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
         </div>
 
         <!-- Horizontal Timeline (Desktop) -->
-        <div class="hidden md:block relative mb-8 reveal stagger-1 px-8">
-          <!-- Timeline Line - connects first to last circle -->
-          <div
-            class="absolute top-4 h-0.5 timeline-line"
-            style={`background-color: ${siteConfig.colors.navy}40; left: calc(12.5% + 16px); right: calc(12.5% + 16px);`}
-          ></div>
-          <div class="flex justify-between">
-            {siteConfig.experience.map((exp, index) => (
-              <div class="relative flex flex-col items-center timeline-dot" style="flex: 1">
+        <div class="hidden md:block relative mb-8 reveal stagger-1">
+          <div class="flex justify-between items-start">
+            {siteConfig.experience.map((exp, index, arr) => (
+              <div class="relative flex flex-col items-center" style="flex: 1">
+                {/* Timeline line segment - not on the last item */}
+                {index < arr.length - 1 && (
+                  <div
+                    class="absolute top-4 left-1/2 w-full h-0.5"
+                    style={`background-color: ${siteConfig.colors.navy}30`}
+                  ></div>
+                )}
+                {/* Circle */}
                 <div
-                  class="w-8 h-8 rounded-full flex items-center justify-center z-10"
+                  class="relative w-8 h-8 rounded-full flex items-center justify-center z-10 timeline-dot"
                   style={`background-color: ${siteConfig.colors.teal}`}
                 >
                   <span class="text-white text-xs font-bold">{index + 1}</span>
                 </div>
-                <div class="mt-4 text-center px-1">
+                {/* Text below */}
+                <div class="mt-4 text-center w-full px-2">
                   <p
                     class="text-sm font-semibold"
                     style={`color: ${siteConfig.colors.teal}`}
@@ -49,11 +53,13 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                     {exp.dateRange.split(' - ')[0]}
                   </p>
                   <p
-                    class="text-xs mt-1 truncate max-w-[140px] mx-auto"
+                    class="text-xs mt-1 leading-tight"
                     style={`color: ${siteConfig.colors.navy}`}
-                    title={exp.company.split('/')[0].trim()}
                   >
-                    {exp.company.split('/')[0].trim()}
+                    {exp.company === "Payet, Rey, Cauvi, Pérez Abogados" ? "PRCP Abogados" :
+                     exp.company === "Poder Judicial - Corte Suprema" ? "Corte Suprema" :
+                     exp.company === "Poder Judicial - Corte Superior" ? "Corte Superior" :
+                     exp.company}
                   </p>
                 </div>
               </div>
