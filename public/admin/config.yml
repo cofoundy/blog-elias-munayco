@@ -1,13 +1,12 @@
-# Use DecapBridge PKCE auth
-# IMPORTANTE: Reemplazar SITE-ID con el ID de DecapBridge después de crear el site
+# DecapBridge PKCE auth configured
 backend:
   name: git-gateway
   repo: cofoundy/blog-elias-munayco
   branch: main
   auth_type: pkce
   base_url: https://auth.decapbridge.com
-  auth_endpoint: /sites/SITE-ID/pkce
-  auth_token_endpoint: /sites/SITE-ID/token
+  auth_endpoint: /sites/58699432-098a-4102-94c2-93d2b1148a35/pkce
+  auth_token_endpoint: /sites/58699432-098a-4102-94c2-93d2b1148a35/token
   gateway_url: https://gateway.decapbridge.com
 
 # See who did what (optional)
