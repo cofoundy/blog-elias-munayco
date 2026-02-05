@@ -19,7 +19,7 @@ export const siteConfig = {
     youtube: "https://youtube.com/@OdiseaLaboral",
   },
   aboutMe:
-    "Abogado laboralista con más de 10 años de experiencia en gestión de relaciones laborales, litigios complejos y cumplimiento laboral en organizaciones de gran tamaño. Acompaño a áreas de RR.HH. y unidades de negocio en la toma de decisiones laborales sensibles, integrando análisis de riesgo, viabilidad jurídica e impacto en productividad y clima. Combino práctica judicial y consultoría con enfoques de psicología organizacional y diseño conductual.",
+    "Me dedico al análisis de conflictos laborales y de las decisiones que los resuelven, con especial énfasis en jurisprudencia y razonamiento probatorio. Este blog reúne notas, casos y reflexiones pensadas para quienes toman decisiones laborales en organizaciones y para quienes investigan el tema desde la práctica.",
   skills: [
     "Derecho Laboral",
     "Relaciones Laborales",

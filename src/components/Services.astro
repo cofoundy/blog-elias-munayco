@@ -5,20 +5,20 @@ const services = [
   {
     icon: "building",
     title: "Empresas",
-    description: "Gestión de relaciones laborales, políticas internas, procedimientos disciplinarios y defensa ante inspecciones.",
-    items: ["Contratos y políticas", "Despidos y ceses", "Inspecciones SUNAFIL", "Due diligence laboral"]
+    description: "Analizo cómo las empresas diseñan y aplican políticas laborales, procedimientos disciplinarios y estrategias frente a la inspección del trabajo. El objetivo es extraer lecciones de la jurisprudencia y de la normativa para mejorar la calidad de las relaciones laborales dentro de las organizaciones.",
+    items: ["Políticas internas y reglamentos de trabajo", "Despidos y ceses en la práctica judicial", "Actuación empresarial ante SUNAFIL", "Due diligence laboral como herramienta de prevención"]
   },
   {
     icon: "user",
     title: "Trabajadores",
-    description: "Defensa de derechos laborales, negociación de salidas y asesoría en conflictos con empleadores.",
-    items: ["Despidos arbitrarios", "Beneficios sociales", "Hostigamiento laboral", "Negociaciones"]
+    description: "Estudio casos y sentencias sobre protección de derechos laborales, beneficios sociales, hostigamiento y negociación de salidas. Me interesa entender cómo estos criterios judiciales modifican el equilibrio entre empleadores y trabajadores y qué estándares de protección se van construyendo.",
+    items: ["Despidos arbitrarios y reposición", "Beneficios sociales y carga de la prueba", "Hostigamiento laboral y carga de la prueba", "Acuerdos y negociaciones de salida"]
   },
   {
     icon: "academic",
     title: "Capacitación",
-    description: "Talleres y charlas para equipos de RRHH, líderes y colaboradores sobre temas laborales y soft skills.",
-    items: ["Talleres in-house", "Webinars", "Compliance laboral", "Liderazgo y comunicación"]
+    description: "Este blog también recoge ideas y esquemas que utilizo en charlas, clases y espacios de formación sobre relaciones laborales, liderazgo y cumplimiento. Más que ofrecer servicios, busco compartir materiales y enfoques que puedan inspirar procesos de aprendizaje dentro de las organizaciones.",
+    items: ["Esquemas y mapas conceptuales de temas laborales", "Guías para discutir casos con equipos de RR.HH.", "Puntos clave de compliance laboral", "Notas sobre liderazgo, comunicación y cultura"]
   }
 ];
 
@@ -44,7 +44,7 @@ const iconPaths: Record<string, string> = {
         class="text-3xl md:text-4xl font-bold mb-4"
         style={`color: ${siteConfig.accentColor}; font-family: 'Raleway', sans-serif;`}
       >
-        ¿Cómo puedo ayudarte?
+        ¿Sobre qué temas trato en el blog?
       </h2>
       <div
         class="w-20 h-1.5 mx-auto rounded-full"
@@ -108,18 +108,5 @@ const iconPaths: Record<string, string> = {
       ))}
     </div>
 
-    <!-- CTA -->
-    <div class="text-center mt-12 reveal stagger-4">
-      <a
-        href={`mailto:${siteConfig.social?.email}?subject=Consulta sobre servicios`}
-        class="btn-hover inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg"
-        style={`background-color: ${siteConfig.colors.navy}; color: white`}
-      >
-        Cuéntame tu caso
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-        </svg>
-      </a>
-    </div>
   </div>
 </section>
