@@ -19,7 +19,7 @@ export const siteConfig = {
     youtube: "https://youtube.com/@OdiseaLaboral",
   },
   aboutMe:
-    "Me dedico al análisis de conflictos laborales y de las decisiones que los resuelven, con especial énfasis en jurisprudencia y razonamiento probatorio. Este blog reúne notas, casos y reflexiones pensadas para quienes toman decisiones laborales en organizaciones y para quienes investigan el tema desde la práctica.",
+    "Me dedico al análisis de conflictos laborales y de las decisiones que los resuelven, con especial énfasis en jurisprudencia y razonamiento probatorio. Este blog reúne notas, casos y reflexiones pensadas para quienes toman decisiones laborales en organizaciones y para quienes investigan las relaciones laborales.",
   skills: [
     "Derecho Laboral",
     "Relaciones Laborales",
