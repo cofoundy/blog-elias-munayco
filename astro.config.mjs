@@ -6,8 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://cofoundy.github.io",
-  base: "/blog-elias-munayco",
+  site: "https://eliasmunayco.com",
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
